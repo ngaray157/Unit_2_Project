@@ -59,7 +59,7 @@ function candidateRows(raceNum, totalVotes) {
       //toLocaleString displays votes with thousands separators, toFixed sets percents to 1 decimal place
       rowHTML += "<td>" + candidateVotes.toLocaleString() + "(" + candidatePercent.toFixed(1) + ")" + "</td>";
       for (var k = 0; k < candidatePercent; k++) {
-         createBar(candidateParty, candidatePercent)\ bv  
+         rowHTML += createBar(candidateParty); 
       }
       rowHTML += "</tr>";
    }
@@ -89,14 +89,16 @@ function calcPercent(value, sum) {
 
 function createBar(partyType) {
    var barHTML = "";
-   if (partyType === "D") {
+   switch(partyType){
+   case "D":
       barHTML += "<td class='dem'></td>";
-   }
-   if (partyType === "R") {
+      break;
+   case "R": 
       barHTML += "<td class='rep'></td>";
-   }
-   if (partyType === "I") {
+      break;
+   case "I": 
       barHTML += "<td class='ind'></td>";
+      break;
    }
    return barHTML;
 }
